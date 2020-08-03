@@ -3,9 +3,11 @@ package org.bhavesh.service.map;
 import java.util.Set;
 
 import org.bhavesh.model.Vet;
-import org.bhavesh.service.CrudService;
 import org.bhavesh.service.VetService;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
 	
@@ -21,7 +23,7 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

@@ -5,6 +5,17 @@
 <title>Vet Index Page</title>
 </head>
 <body>
-	<h1 th:text="'List of Vets'">Index Page</h1>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>FirstName</th>
+			<th>LastName</th>
+		</tr>
+		<tr th:each="vet: ${vetset}">
+			<td th:text="${vet.id}"></td>
+			<td th:text="${vet.firstName}"></td>
+			<td th:text="${vet.lirstName}"></td>
+		</tr>
+	</table>
 </body>
 </html>

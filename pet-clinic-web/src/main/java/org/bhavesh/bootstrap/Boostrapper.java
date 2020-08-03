@@ -1,17 +1,10 @@
 package org.bhavesh.bootstrap;
 
-import java.time.LocalDate;
-
 import org.bhavesh.model.Owner;
-import org.bhavesh.model.Pet;
-import org.bhavesh.model.PetType;
 import org.bhavesh.model.Vet;
 import org.bhavesh.service.OwnerService;
 import org.bhavesh.service.PetService;
 import org.bhavesh.service.VetService;
-import org.bhavesh.service.map.OwnerServiceMap;
-import org.bhavesh.service.map.PetServiceMap;
-import org.bhavesh.service.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -30,19 +23,10 @@ public class Boostrapper implements CommandLineRunner{
 		this.vetService = vetService;
 	}
 
-
-	public Boostrapper() {
-		this.ownerService=new OwnerServiceMap();
-		this.vetService=new VetServiceMap();
-		this.petService=new PetServiceMap();
-	}
-
-
 	@Override
 	public void run(String... args) throws Exception {
 	
         Owner owner1 = new Owner();
-        owner1.setId(1L);
         owner1.setFirstName("Michael");
         owner1.setLirstName("Weston");
         ownerService.save(owner1);
