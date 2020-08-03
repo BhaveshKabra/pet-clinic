@@ -1,6 +1,6 @@
 package org.bhavesh.model;
 
-public class Person {
+public class Person extends BaseEntity {
 	private String firstName;
 	private String lirstName;
 	public String getFirstName() {
