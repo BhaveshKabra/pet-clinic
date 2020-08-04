@@ -1,0 +1,10 @@
+db: 
+   username: dbusername
+   password: dbpassword
+   url: test:db:whatistheurl:usedfor
+jms:
+  username: jmsusername
+  password: jmspassword
+  url: test:jms:whatistheurl:usedfor
+ 
+ 
