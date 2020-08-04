@@ -2,6 +2,9 @@ package org.bhavesh.bootstrap;
 
 import org.bhavesh.model.Owner;
 import org.bhavesh.model.Vet;
+import org.bhavesh.readresource.FakeDBPropertyReader;
+import org.bhavesh.readresource.PropertiesConfiguration;
+import org.bhavesh.readresource.FakeJMSPropertyReader;
 import org.bhavesh.service.OwnerService;
 import org.bhavesh.service.PetService;
 import org.bhavesh.service.VetService;
@@ -14,13 +17,18 @@ public class Boostrapper implements CommandLineRunner{
 	private final OwnerService ownerService;
 	private final PetService petService;
 	private final VetService vetService;
+	private final PropertiesConfiguration config;
+	private final FakeJMSPropertyReader jmsread;
+	private final FakeDBPropertyReader fakeread;
 	
-
-	public Boostrapper(OwnerService ownerService, PetService petService, VetService vetService) {
+	public Boostrapper(OwnerService ownerService, PetService petService, VetService vetService,PropertiesConfiguration config) {
 		super();
 		this.ownerService = ownerService;
 		this.petService = petService;
 		this.vetService = vetService;
+		this.config=config;
+		jmsread=config.jmsPropertyRead();
+		fakeread=config.fakePropertyRead();
 	}
 
 	@Override
@@ -45,6 +53,9 @@ public class Boostrapper implements CommandLineRunner{
         Vet vet2 = new Vet();
         vet2.setFirstName("Jessie");
         vetService.save(vet2);
+
+        System.out.println("JMS: Username: "+jmsread.getUsername()+" Password: "+jmsread.getPassword()+" Url: "+jmsread.getUrl());
+        System.out.println("DB: Username: "+fakeread.getUsername()+" Password: "+fakeread.getPassword()+" Url: "+fakeread.getUrl());
 	}
 
 }
